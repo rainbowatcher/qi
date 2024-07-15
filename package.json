@@ -23,9 +23,11 @@
         "coverage": "cargo tarpaulin --out html --fail-immediately --frozen --output-dir target/report",
         "test:node": "vitest --run",
         "test:wasm": "wasm-pack test --chrome --headless",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "prepare": "husky"
     },
     "devDependencies": {
+        "@commitlint/config-conventional": "^19.2.2",
         "@rainbowatcher/eslint-config": "^0.11.0",
         "@rainbowatcher/eslint-config-ignore": "^0.11.0",
         "@rainbowatcher/eslint-config-js": "^0.11.0",
@@ -38,8 +40,13 @@
         "eslint": "^9.7.0",
         "execa": "^9.3.0",
         "fs-extra": "^11.2.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.7",
         "rimraf": "^6.0.1",
         "tsx": "^4.16.2",
         "vitest": "^2.0.2"
+    },
+    "lint-staged": {
+        "*.{ts,js,md,toml,json}": "eslint --fix"
     }
 }
