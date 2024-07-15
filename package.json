@@ -46,6 +46,9 @@
         "tsx": "^4.16.2",
         "vitest": "^2.0.2"
     },
+    "commitlint": {
+        "extends": ["@commitlint/config-conventional"]
+    },
     "lint-staged": {
         "*.{ts,js,md,toml,json}": "eslint --fix"
     }
