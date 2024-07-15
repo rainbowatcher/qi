@@ -1,0 +1,28 @@
+{
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true,
+    },
+    "cSpell.words": [
+        "bopomofo",
+        "bsearch",
+        "JAMO",
+        "kangxi",
+        "qijs",
+    ],
+    "prettier.enable": false,
+    "editor.formatOnSave": false,
+    // Auto fix
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "never",
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "toml",
+        "json",
+    ],
+}

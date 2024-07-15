@@ -1,0 +1,45 @@
+{
+    "name": "qi",
+    "type": "module",
+    "version": "0.1.0",
+    "private": true,
+    "packageManager": "pnpm@9.5.0",
+    "description": "a tool for format document",
+    "author": "rainbowatcher <rainbow-w@qq.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/rainbowatcher/qi#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rainbowatcher/qi.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rainbowatcher/qi/issues"
+    },
+    "main": "index.js",
+    "scripts": {
+        "gen": "tsx scripts/gen.ts",
+        "build": "tsx scripts/build.ts",
+        "clean": "rimraf packages/qijs/*",
+        "coverage": "cargo tarpaulin --out html --fail-immediately --frozen --output-dir target/report",
+        "test:node": "vitest --run",
+        "test:wasm": "wasm-pack test --chrome --headless",
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "@rainbowatcher/eslint-config": "^0.11.0",
+        "@rainbowatcher/eslint-config-ignore": "^0.11.0",
+        "@rainbowatcher/eslint-config-js": "^0.11.0",
+        "@rainbowatcher/eslint-config-json": "^0.11.0",
+        "@rainbowatcher/eslint-config-md": "^0.11.0",
+        "@rainbowatcher/eslint-config-prettier": "^0.11.0",
+        "@rainbowatcher/eslint-config-ts": "^0.11.0",
+        "@types/fs-extra": "^11.0.4",
+        "@types/node": "^20.14.10",
+        "eslint": "^9.7.0",
+        "execa": "^9.3.0",
+        "fs-extra": "^11.2.0",
+        "rimraf": "^6.0.1",
+        "tsx": "^4.16.2",
+        "vitest": "^2.0.2"
+    }
+}

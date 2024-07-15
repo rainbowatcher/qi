@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "packages/**/*.ts",
+        "tests/**/*.ts",
+        "scripts/**/*.ts",
+    ]
+}

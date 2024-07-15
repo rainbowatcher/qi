@@ -1,0 +1,17 @@
+[package]
+version = "0.0.0"
+publish = false
+name = "benchmark"
+authors = ["rainbowatcher <rainobw-w@qq.com>"]
+edition = "2021"
+
+
+[dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
+qi = { path = "../crates/core", version = "*" }
+
+
+[[bench]]
+name = "unicode"
+path = "unicode.rs"
+harness = false
