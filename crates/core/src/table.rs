@@ -247,7 +247,8 @@ pub const DIVES_AKURU: (char, char) = ('\u{11900}', '\u{1195F}');
 pub const NANDINAGARI: (char, char) = ('\u{119A0}', '\u{119FF}');
 pub const ZANABAZAR_SQUARE: (char, char) = ('\u{11A00}', '\u{11A4F}');
 pub const SOYOMBO: (char, char) = ('\u{11A50}', '\u{11AAF}');
-pub const UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS_EXTENDED_A: (char, char) = ('\u{11AB0}', '\u{11ABF}');
+pub const UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS_EXTENDED_A: (char, char) =
+    ('\u{11AB0}', '\u{11ABF}');
 pub const PAU_CIN_HAU: (char, char) = ('\u{11AC0}', '\u{11AFF}');
 pub const DEVANAGARI_EXTENDED_A: (char, char) = ('\u{11B00}', '\u{11B5F}');
 pub const BHAIKSUKI: (char, char) = ('\u{11C00}', '\u{11C6F}');
