@@ -4,5 +4,6 @@ members = [
     "crates/core",
 
     # Internal
-    "benches"
+    "benches",
+    "examples/rust"
 ]

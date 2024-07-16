@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example for run qijs in web</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module">
+        import init, { format } from "../../packages/qijs/qi.js"
+        await init()
+        document.getElementById("root").innerHTML = format("abc你好,世界123")
+    </script>
+</body>
+</html>
