@@ -11,9 +11,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.2.2
         version: 19.2.2
-      '@playwright/browser-chromium':
-        specifier: ^1.45.1
-        version: 1.45.1
       '@rainbowatcher/eslint-config':
         specifier: ^0.11.0
         version: 0.11.0(@rainbowatcher/eslint-config-ignore@0.11.0)(@rainbowatcher/eslint-config-js@0.11.0(@typescript-eslint/eslint-plugin@7.16.0(@typescript-eslint/parser@7.16.0(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)(typescript@5.5.3))(@rainbowatcher/eslint-config-json@0.11.0(eslint@9.7.0))(@rainbowatcher/eslint-config-md@0.11.0(eslint@9.7.0))(@rainbowatcher/eslint-config-prettier@0.11.0(@types/eslint@8.56.10)(eslint@9.7.0))(@rainbowatcher/eslint-config-toml@0.11.0(eslint@9.7.0))(@rainbowatcher/eslint-config-ts@0.11.0(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)
@@ -353,10 +350,6 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
-
-  '@playwright/browser-chromium@1.45.1':
-    resolution: {integrity: sha512-Jcix36xOagtda46bfn0CcdnygrcFT7FfwLhF1Y8JkHZTKPgfiku695+F0+CWabL4sU9nBG8sT5l7dmgkMgAJgw==}
-    engines: {node: '>=18'}
 
   '@rainbowatcher/eslint-config-ignore@0.11.0':
     resolution: {integrity: sha512-hCwjKVBR6wQCJugUjiM39rVq+RKGjLpAjNh7azud26wi8v24KKoMketchAv4fx8IRjK3agdHkTLp4rCRrILvdg==}
@@ -2333,10 +2326,6 @@ snapshots:
     optional: true
 
   '@pkgr/core@0.1.1': {}
-
-  '@playwright/browser-chromium@1.45.1':
-    dependencies:
-      playwright-core: 1.45.1
 
   '@rainbowatcher/eslint-config-ignore@0.11.0':
     dependencies:
