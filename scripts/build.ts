@@ -39,3 +39,4 @@ if (indexStr.includes(fetchExpr)) {
 }
 await ensureFile(pkgJsonPath)
 await writeFile(pkgJsonPath, pkgJsonContent)
+console.log("build success")

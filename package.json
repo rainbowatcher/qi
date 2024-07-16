@@ -18,11 +18,12 @@
     "main": "index.js",
     "scripts": {
         "gen": "tsx scripts/gen.ts",
-        "build": "tsx scripts/build.ts",
+        "build": "pnpm clean && tsx scripts/build.ts",
         "clean": "rimraf packages/qijs/*",
         "coverage": "cargo tarpaulin --out html --fail-immediately --frozen --output-dir target/report",
+        "test": "pnpm test:wasm && pnpm test:node",
         "test:node": "vitest --run",
-        "test:wasm": "wasm-pack test --chrome --headless",
+        "test:wasm": "wasm-pack test --chrome --headless crates/core",
         "lint": "eslint .",
         "prepare": "husky"
     },
