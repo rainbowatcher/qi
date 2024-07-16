@@ -40,11 +40,14 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
 
+      - name: Install
+        run: pnpm i --frozen-lockfile
+
       - name: Install wasm-pack
         run: pnpm install -g wasm-pack
 
-      - name: Install
-        run: pnpm i --frozen-lockfile
+      - name: Install browser
+        run: pnpm exec playwright install chromium
 
       - name: Build
         run: pnpm run build

@@ -1,5 +1,6 @@
 ![GitHub manifest version](https://img.shields.io/github/package-json/v/rainbowatcher/qi?color=16a34a)
 ![Static Badge](https://img.shields.io/badge/status-WIP-16a34a)
+[![codecov](https://codecov.io/github/rainbowatcher/qi/graph/badge.svg?token=QNY7IW9XVV)](https://codecov.io/github/rainbowatcher/qi)
 
 # Qi
 
