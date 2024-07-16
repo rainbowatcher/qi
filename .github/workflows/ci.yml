@@ -36,6 +36,9 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
 
+      - name: Install wasm-pack
+        run: pnpm install -g wasm-pack
+
       - name: Install
         run: pnpm i --frozen-lockfile
 
