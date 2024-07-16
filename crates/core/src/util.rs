@@ -118,9 +118,7 @@ pub fn is_quote(c: char) -> bool {
 pub mod tests {
     use super::*;
 
-    use wasm_bindgen_test::wasm_bindgen_test;
-
-    #[wasm_bindgen_test]
+    #[test]
     fn test_bsearch_range_table() {
         let ranges = &[('a', 'c'), ('e', 'g')];
 
@@ -133,7 +131,7 @@ pub mod tests {
 
     macro_rules! expect {
         ($name: ident, $func: ident, $text: literal) => {
-            #[wasm_bindgen_test]
+            #[test]
             fn $name() {
                 let text = $text;
                 for c in text.chars() {
@@ -145,7 +143,7 @@ pub mod tests {
 
     macro_rules! expect_not {
         ($name: ident, $func: ident, $text: literal) => {
-            #[wasm_bindgen_test]
+            #[test]
             fn $name() {
                 let text = $text;
                 for c in text.chars() {

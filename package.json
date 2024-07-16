@@ -17,17 +17,18 @@
     },
     "main": "index.js",
     "scripts": {
-        "gen": "tsx scripts/gen.ts",
+        "bench": "cargo bench",
         "build": "pnpm clean && tsx scripts/build.ts",
         "clean": "rimraf packages/qijs/*",
         "coverage": "cargo tarpaulin --out html --fail-immediately --frozen --output-dir target/report",
-        "test": "pnpm test:wasm && pnpm test:node",
-        "test:node": "vitest --run",
-        "test:wasm": "wasm-pack test --chrome --headless crates/core",
+        "gen": "tsx scripts/gen.ts",
         "lint": "eslint .",
-        "bench": "cargo bench",
-        "typecheck": "tsc --noEmit --skipLibCheck",
-        "prepare": "husky"
+        "prepare": "husky",
+        "test": "pnpm test:wasm && pnpm test:rust && pnpm test:node",
+        "test:node": "vitest --run",
+        "test:rust": "cargo test",
+        "test:wasm": "wasm-pack test --chrome --headless crates/core",
+        "typecheck": "tsc --noEmit --skipLibCheck"
     },
     "devDependencies": {
         "@commitlint/config-conventional": "^19.2.2",
