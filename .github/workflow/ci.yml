@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  base:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [18, 20]
+      fail-fast: true
+    runs-on: ${{ matrix.os }}
+    name: "Test: node-${{ matrix.node_version }}, ${{ matrix.os }}"
+    steps:
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          targets: wasm32-unknown-unknown
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set node ${{ matrix.node_version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: pnpm
+
+      - name: Install
+        run: pnpm i --frozen-lockfile
+
+      - name: Type Check
+        run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Lint
+        run: pnpm run lint
