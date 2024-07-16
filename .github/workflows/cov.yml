@@ -1,8 +1,16 @@
 name: coverage
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test:
+  cov:
     # see https://github.com/xd009642/tarpaulin#github-actions
     name: coverage
     runs-on: ubuntu-latest
