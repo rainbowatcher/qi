@@ -25,6 +25,8 @@
         "test:node": "vitest --run",
         "test:wasm": "wasm-pack test --chrome --headless crates/core",
         "lint": "eslint .",
+        "bench": "cargo bench",
+        "typecheck": "tsc --noEmit --skipLibCheck",
         "prepare": "husky"
     },
     "devDependencies": {
