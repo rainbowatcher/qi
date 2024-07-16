@@ -2,9 +2,7 @@
 resolver = "2"
 members = [
     "crates/core",
-
-    # Internal
-    "benches",
+    "crates/benches",
     "examples/rust"
 ]
 
