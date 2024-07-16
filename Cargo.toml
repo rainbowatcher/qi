@@ -7,3 +7,9 @@ members = [
     "benches",
     "examples/rust"
 ]
+
+[profile.release]
+strip = "symbols"
+lto = true
+opt-level = 3
+codegen-units = 1
