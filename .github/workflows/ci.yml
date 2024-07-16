@@ -27,6 +27,10 @@ jobs:
           toolchain: stable
           targets: wasm32-unknown-unknown
 
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: canary
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
