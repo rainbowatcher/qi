@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "packageManager": "pnpm@9.5.0",
-    "description": "a tool for format document",
+    "description": "A tiny, fast, and powerful formatter for documentation, especially for content in CJK.",
     "author": "rainbowatcher <rainbow-w@qq.com>",
     "license": "MIT",
     "homepage": "https://github.com/rainbowatcher/qi#readme",
