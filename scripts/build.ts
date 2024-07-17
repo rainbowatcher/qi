@@ -10,7 +10,7 @@ import { rimraf } from "rimraf"
 import eslintConfig from "../eslint.config.js"
 import { version } from "../package.json"
 
-const targetDir = "packages/qijs"
+const targetDir = "packages/qi-js"
 const indexFilePath = `${process.cwd()}/${targetDir}/index.js`
 const pkgJsonPath = `${process.cwd()}/${targetDir}/package.json`
 const wasmPath = `${process.cwd()}/${targetDir}/index_bg.wasm`
@@ -29,7 +29,7 @@ const pkgJsonContent = JSON.stringify({
     license: "MIT",
     main: "index.js",
     module: "index.js",
-    name: "qi",
+    name: "qi-js",
     repository: {
         type: "git",
         url: "git+https://github.com/rainbowatcher/qi.git",

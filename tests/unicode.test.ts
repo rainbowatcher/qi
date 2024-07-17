@@ -1,13 +1,13 @@
 import {
     describe, expect, it, test,
 } from "vitest"
-import { isChinese } from "../packages/qijs-legacy/src/cjk"
+import { isChinese } from "../packages/qi-js-legacy/src/cjk"
 import {
     isAlphabet, isCJKUnifiedIdeographsExtensionC, isGreekAndCoptic, isHangulCompatibilityJamo, isHangulJamo,
     isHangulSyllables, isHiragana, isKatakana, isKatakanaPhoneticExtensions, isLatin1Supplement, isNumber,
     isNumberForms, requiresMoreThanTwoBytes,
-} from "../packages/qijs-legacy/src/unicode"
-import type { CJKOptions } from "../packages/qijs-legacy/src/type"
+} from "../packages/qi-js-legacy/src/unicode"
+import type { CJKOptions } from "../packages/qi-js-legacy/src/type"
 
 
 const options: CJKOptions = { range: "basic" }

@@ -1,7 +1,7 @@
 import { beforeAll, bench, describe } from "vitest"
-import init, { format } from "../packages/qijs"
+import init, { format } from "../packages/qi-js"
 // eslint-disable-next-line antfu/no-import-dist
-import { format as legacyFormat } from "../packages/qijs-legacy/dist/index.js"
+import { format as legacyFormat } from "../packages/qi-js-legacy/dist/index.js"
 
 beforeAll(async () => {
     await init()
