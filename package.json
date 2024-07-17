@@ -15,17 +15,18 @@
     "bugs": {
         "url": "https://github.com/rainbowatcher/qi/issues"
     },
-    "main": "index.js",
     "scripts": {
-        "bench": "cargo bench",
+        "bench": "pnpm bench:rust && pnpm bench:node --run",
+        "bench:node": "vitest bench",
+        "bench:rust": "cargo bench",
         "build": "pnpm clean && tsx scripts/build.ts",
         "clean": "rimraf packages/qijs/*",
         "coverage": "cargo tarpaulin --out html --fail-immediately --frozen --output-dir target/report",
         "gen": "tsx scripts/gen.ts",
         "lint": "eslint .",
         "prepare": "husky",
-        "test": "pnpm test:wasm && pnpm test:rust && pnpm test:node",
-        "test:node": "vitest --run",
+        "test": "pnpm test:wasm && pnpm test:rust && pnpm test:node --run",
+        "test:node": "vitest",
         "test:rust": "cargo test",
         "test:wasm": "wasm-pack test --chrome --headless crates/core",
         "typecheck": "tsc --noEmit --skipLibCheck"
@@ -47,6 +48,8 @@
         "h3": "^1.12.0",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.7",
+        "mkdist": "^1.5.3",
+        "picocolors": "^1.0.1",
         "playwright": "^1.45.1",
         "rimraf": "^6.0.1",
         "tsx": "^4.16.2",

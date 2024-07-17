@@ -2,12 +2,14 @@ import { readFile, writeFile } from "node:fs/promises"
 import process from "node:process"
 import { $ } from "execa"
 import { ensureDir, ensureFile } from "fs-extra"
+import c from "picocolors"
 import { rimraf } from "rimraf"
 import { version } from "../package.json"
 
 const targetDir = "packages/qijs"
 const indexFilePath = `${process.cwd()}/${targetDir}/qi.js`
 const pkgJsonPath = `${process.cwd()}/${targetDir}/package.json`
+const wasmPath = `${process.cwd()}/${targetDir}/qi_bg.wasm`
 const pkgJsonContent = JSON.stringify({
     files: [
         "qi_bg.wasm",
@@ -23,7 +25,8 @@ const pkgJsonContent = JSON.stringify({
 
 await ensureDir(`${process.cwd()}/${targetDir}`)
 await rimraf(`${process.cwd()}/${targetDir}`)
-await $`wasm-pack build crates/core --no-pack --dev -d ../../${targetDir} -t web`
+await $`wasm-pack build crates/core --no-pack --release -d ../../${targetDir} -t web`
+await $`wasm-opt -O4 ${wasmPath} -o ${wasmPath}`
 const indexStr = await readFile(indexFilePath, "utf8")
 const fetchExpr = "input = fetch(input);"
 if (indexStr.includes(fetchExpr)) {
@@ -39,4 +42,5 @@ if (indexStr.includes(fetchExpr)) {
 }
 await ensureFile(pkgJsonPath)
 await writeFile(pkgJsonPath, pkgJsonContent)
-console.log("build success")
+await $`pnpm -r build`
+console.log(c.bgGreen(" BUILD SUCCESS "))
