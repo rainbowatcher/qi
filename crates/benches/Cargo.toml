@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
-qi = { path = "../core", version = "*" }
+qi-rs = { path = "../core", version = "*" }
 
 [[bench]]
 name = "unicode"

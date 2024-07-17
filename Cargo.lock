@@ -34,7 +34,7 @@ name = "benchmark"
 version = "0.0.0"
 dependencies = [
  "criterion",
- "qi",
+ "qi-rs",
 ]
 
 [[package]]
@@ -318,7 +318,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "qi"
+name = "qi-rs"
 version = "0.1.0"
 dependencies = [
  "wasm-bindgen",
@@ -387,7 +387,7 @@ checksum = "7a66a03ae7c801facd77a29370b4faec201768915ac14a721ba36f20bc9c209b"
 name = "rust"
 version = "0.1.0"
 dependencies = [
- "qi",
+ "qi-rs",
 ]
 
 [[package]]

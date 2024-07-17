@@ -1,9 +1,9 @@
 macro_rules! expect {
     ($text: literal, $expected: literal) => {
-        assert_eq!(qi::format($text, None), $expected);
+        assert_eq!(qi_rs::format($text, None), $expected);
     };
     ($text: literal, $expected: literal, $options: expr) => {
-        assert_eq!(qi::format($text, Some($options)), $expected);
+        assert_eq!(qi_rs::format($text, Some($options)), $expected);
     };
 }
 
@@ -197,8 +197,8 @@ fn cjk_unified_idographs_extention_i() {
 
 #[test]
 fn punctuations() {
-    let punctuations_off = qi::Options {
-        spacing: Some(qi::SpacingOptions {
+    let punctuations_off = qi_rs::Options {
+        spacing: Some(qi_rs::SpacingOptions {
             punctuations: false,
         }),
     };
