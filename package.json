@@ -28,7 +28,10 @@
         "test:node": "vitest",
         "test:rust": "cargo test",
         "test:wasm": "wasm-pack test --chrome --headless crates/core",
-        "typecheck": "tsc --noEmit --skipLibCheck"
+        "typecheck": "tsc --noEmit --skipLibCheck",
+        "publish": "pnpm publish:rust && pnpm publish:node",
+        "publish:node": "pnpm build && pnpm -r publish",
+        "publish:rust": "cargo publish -p qi-rs"
     },
     "devDependencies": {
         "@commitlint/config-conventional": "^19.2.2",
