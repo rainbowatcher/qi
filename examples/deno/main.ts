@@ -1,4 +1,4 @@
-import init, { format } from "../../packages/qijs/qi.js"
+import init, { format } from "../../packages/qijs/index.js"
 
 // @ts-expect-error for deno
 if (import.meta.main) {

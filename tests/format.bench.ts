@@ -1,5 +1,5 @@
 import { beforeAll, bench, describe } from "vitest"
-import init, { format } from "../packages/qijs/qi"
+import init, { format } from "../packages/qijs"
 // eslint-disable-next-line antfu/no-import-dist
 import { format as legacyFormat } from "../packages/qijs-legacy/dist/index.js"
 
