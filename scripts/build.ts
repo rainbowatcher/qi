@@ -1,13 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises"
 import process from "node:process"
-import { Linter } from "eslint"
 import { $ } from "execa"
 import { ensureDir, ensureFile } from "fs-extra"
 import ora from "ora"
 import c from "picocolors"
 import { rimraf } from "rimraf"
-// @ts-expect-error missing type
-import eslintConfig from "../eslint.config.js"
 import { version } from "../package.json"
 
 const targetDir = "packages/qi-js"
@@ -41,8 +38,6 @@ const pkgJsonContent = JSON.stringify({
     types: "index.d.ts",
     version,
 }, null, 2)
-const linter = new Linter({ configType: "flat" })
-const config = await eslintConfig
 
 const spinner = ora()
 spinner.info("Start building")
@@ -63,12 +58,12 @@ spinner.start("Handle index.js")
 const indexStr = await readFile(indexFilePath, "utf8")
 const fetchExpr = "input = fetch(input);"
 if (indexStr.includes(fetchExpr)) {
-    const newIndexStr = indexStr.replace(fetchExpr, `if (globalThis.process?.release?.name === "node") {
+    const newIndexStr = `/* eslint-disable unicorn/no-abusive-eslint-disable */\n/* eslint-disable */\n${indexStr.replace(fetchExpr, `if (globalThis.process?.release?.name === "node") {
         const fs = (await import('fs')).default;
         input = fs.readFileSync(input);
         } else {
             input = fetch(input);
-        }`)
+    }`)}`
     await writeFile(indexFilePath, newIndexStr)
 } else {
     spinner.stopAndPersist({ text: "generated js file may incorrect" })
@@ -78,12 +73,22 @@ spinner.succeed()
 
 spinner.start("Handle package.json")
 await ensureFile(pkgJsonPath)
-await writeFile(pkgJsonPath, linter.verifyAndFix(pkgJsonContent, config, "package.json").output)
+await writeFile(pkgJsonPath, pkgJsonContent)
 spinner.succeed()
+
+// eslint command fail here, execute eslint twice then the error disappears
+try {
+    spinner.start("Linting generated code")
+    await $`pnpm exec eslint ${process.cwd()}/${targetDir} --fix`
+    spinner.succeed()
+} catch {
+    await $`pnpm exec eslint ${process.cwd()}/${targetDir} --fix`
+    spinner.succeed()
+}
 
 spinner.start("Building legacy lib")
 await $`pnpm -r build`
 spinner.succeed()
 
-spinner.info(`build ${c.green("success")}`)
+spinner.succeed(`build ${c.green("success")}`)
 spinner.stop()
