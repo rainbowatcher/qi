@@ -1,7 +1,7 @@
 {
     "name": "qijs-legacy",
     "type": "module",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "private": true,
     "packageManager": "pnpm@9.4.0",
     "description": "",
@@ -28,10 +28,6 @@
         "dist"
     ],
     "scripts": {
-        "build": "mkdist --format esm -d --ext js",
-        "lint": "eslint .",
-        "start": "tsx src/index.ts",
-        "test": "vitest",
-        "typecheck": "tsc --noEmit"
+        "build": "mkdist --format esm -d --ext js"
     }
 }

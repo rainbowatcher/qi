@@ -3,9 +3,10 @@ name = "qi-rs"
 description = "A tiny, fast, and powerful formatter for documentation, especially for content in CJK."
 keywords = ["formatter", "cjk"]
 
-version.workspace = true
-edition.workspace = true
 authors.workspace = true
+edition.workspace = true
+version.workspace = true
+readme.workspace = true
 license.workspace = true
 homepage.workspace = true
 repository.workspace = true

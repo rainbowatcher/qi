@@ -8,5 +8,7 @@ export default defineConfig({
     toml: true,
     typescript: true,
 }, {
-    ignores: ["packages/qijs/**"],
+    rules: {
+        "toml/padding-line-between-pairs": "off",
+    },
 })
