@@ -11,13 +11,24 @@ const indexFilePath = `${process.cwd()}/${targetDir}/qi.js`
 const pkgJsonPath = `${process.cwd()}/${targetDir}/package.json`
 const wasmPath = `${process.cwd()}/${targetDir}/qi_bg.wasm`
 const pkgJsonContent = JSON.stringify({
+    author: "rainbowatcher <rainbow-w@qq.com>",
+    description: "A tiny, fast, and powerful formatter for documentation, especially for content in CJK.",
     files: [
         "qi_bg.wasm",
         "qi.js",
         "qi.d.ts",
     ],
+    homepage: "https://github.com/rainbowatcher/qi#readme",
+    license: "MIT",
     main: "qi.js",
     name: "qi",
+    repository: {
+        type: "git",
+        url: "git+https://github.com/rainbowatcher/qi.git",
+    },
+    scripts: {
+        publish: "pnpm publish",
+    },
     type: "module",
     types: "qi.d.ts",
     version,
