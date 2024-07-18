@@ -31,9 +31,6 @@ const pkgJsonContent = JSON.stringify({
         type: "git",
         url: "git+https://github.com/rainbowatcher/qi.git",
     },
-    scripts: {
-        publish: "pnpm publish",
-    },
     type: "module",
     types: "index.d.ts",
     version,
@@ -79,6 +76,7 @@ spinner.succeed()
 // eslint command fail here, execute eslint twice then the error disappears
 try {
     spinner.start("Linting generated code")
+    await rimraf(`${process.cwd()}/${targetDir}/.gitignore`)
     await $`pnpm exec eslint ${process.cwd()}/${targetDir} --fix`
     spinner.succeed()
 } catch {
