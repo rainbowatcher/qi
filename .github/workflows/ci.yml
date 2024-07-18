@@ -43,8 +43,8 @@ jobs:
       - name: Install
         run: pnpm i --frozen-lockfile
 
-      - name: Install wasm-pack
-        run: pnpm install -g wasm-pack
+      - name: Install wasm-pack and wasm-opt
+        run: pnpm install -g wasm-pack wasm-opt
 
       - name: Install browser
         run: pnpm exec playwright install chromium
