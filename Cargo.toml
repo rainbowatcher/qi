@@ -18,5 +18,4 @@ readme = "README.md"
 [profile.release]
 strip = "symbols"
 lto = true
-opt-level = 3
 codegen-units = 1
