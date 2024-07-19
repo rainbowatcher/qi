@@ -259,3 +259,11 @@ fn quotes() {
     expect!(r#"定义:123中文"#, r#"定义: 123 中文"#);
     expect!(r#"定义:"123中文""#, r#"定义: "123 中文""#);
 }
+
+#[test]
+fn multiline() {
+    expect!(
+        "section前面\n中文123漢字\nsection後面",
+        "section 前面\n中文 123 漢字\nsection 後面"
+    );
+}
