@@ -85,32 +85,27 @@ pub fn is_cjk_compatibility(c: char) -> bool {
 
 #[wasm_bindgen]
 pub fn is_common_symbols(c: char) -> bool {
-    R_COMMON_SYMBOLS.binary_search(&c).is_ok()
+    R_COMMON_SYMBOLS.get(&c).is_some()
 }
 
 #[wasm_bindgen]
 pub fn is_open_parentheses(c: char) -> bool {
-    R_OPEN_PARENTHESES.binary_search(&c).is_ok()
+    R_OPEN_PARENTHESES.get(&c).is_some()
 }
 
 #[wasm_bindgen]
 pub fn is_close_parentheses(c: char) -> bool {
-    R_CLOSE_PARENTHESES.binary_search(&c).is_ok()
+    R_CLOSE_PARENTHESES.get(&c).is_some()
 }
 
 #[wasm_bindgen]
 pub fn is_western_sentence_punctuation(c: char) -> bool {
-    R_WESTERN_SENTENCE_PUNCTUATIONS.binary_search(&c).is_ok()
-}
-
-#[wasm_bindgen]
-pub fn is_colon(c: char) -> bool {
-    c == ':'
+    R_WESTERN_SENTENCE_PUNCTUATIONS.get(&c).is_some()
 }
 
 #[wasm_bindgen]
 pub fn is_quote(c: char) -> bool {
-    R_QUOTES.binary_search(&c).is_ok()
+    R_QUOTES.get(&c).is_some()
 }
 
 // MARK: TEST
