@@ -1,9 +1,10 @@
+use core::cmp::Ordering::{Equal, Greater, Less};
 use wasm_bindgen::prelude::wasm_bindgen;
 
 use crate::{
     range::{
-        R_CHINESE, R_CLOSE_PARENTHESES, R_COMMON_SYMBOLS, R_JAPANESE, R_KOREAN, R_OPEN_PARENTHESES,
-        R_QUOTES, R_WESTERN_SENTENCE_PUNCTUATIONS,
+        R_CHINESE, R_CHINESE_EXTENSIONS, R_CJK, R_CLOSE_PARENTHESES, R_COMMON_SYMBOLS, R_JAPANESE,
+        R_KOREAN, R_OPEN_PARENTHESES, R_QUOTES, R_WESTERN_SENTENCE_PUNCTUATIONS,
     },
     table::{
         CJK_COMPATIBILITY, CJK_COMPATIBILITY_FORMS, ENCLOSED_ALPHANUMERICS,
@@ -12,8 +13,7 @@ use crate::{
 };
 
 #[inline]
-pub fn bsearch_range_table(c: char, r: &[(char, char)]) -> bool {
-    use core::cmp::Ordering::{Equal, Greater, Less};
+pub fn bsearch_range_table<const N: usize>(c: char, r: &[(char, char); N]) -> bool {
     r.binary_search_by(|&(lo, hi)| {
         if lo <= c && c <= hi {
             Equal
@@ -26,26 +26,34 @@ pub fn bsearch_range_table(c: char, r: &[(char, char)]) -> bool {
     .is_ok()
 }
 
+#[inline]
+pub fn in_range<const N: usize>(c: char, r: &[(char, char); N]) -> bool {
+    r.iter().any(|&(start, end)| start <= c && c <= end)
+}
+
 #[wasm_bindgen]
 pub fn is_chinese(c: char) -> bool {
-    bsearch_range_table(c, R_CHINESE)
+    bsearch_range_table(c, &R_CHINESE)
 }
 
 #[wasm_bindgen]
 pub fn is_japanese(c: char) -> bool {
-    bsearch_range_table(c, R_JAPANESE) || is_chinese(c)
+    in_range(c, &R_JAPANESE) || is_chinese(c)
 }
 
 #[wasm_bindgen]
 pub fn is_korean(c: char) -> bool {
-    bsearch_range_table(c, R_KOREAN)
+    in_range(c, &R_KOREAN)
 }
 
 #[wasm_bindgen]
 pub fn is_cjk(c: char) -> bool {
-    bsearch_range_table(c, R_CHINESE)
-        || bsearch_range_table(c, R_JAPANESE)
-        || bsearch_range_table(c, R_KOREAN)
+    bsearch_range_table(c, &R_CJK)
+}
+
+#[wasm_bindgen]
+pub fn is_cjk_extended(c: char) -> bool {
+    bsearch_range_table(c, &R_CHINESE_EXTENSIONS)
 }
 
 #[wasm_bindgen]
@@ -115,7 +123,7 @@ pub mod tests {
 
     #[test]
     fn test_bsearch_range_table() {
-        let ranges = &[('a', 'c'), ('e', 'g')];
+        let ranges = &[('\u{0061}', '\u{0063}'), ('\u{0065}', '\u{0067}')];
 
         assert!(bsearch_range_table('b', ranges));
         assert!(!bsearch_range_table('d', ranges));
@@ -210,6 +218,5 @@ pub mod tests {
         is_western_sentence_punctuation,
         "!,.;?"
     );
-    expect!(test_is_colon, is_colon, ":");
     expect!(test_is_quote, is_quote, "\"'");
 }

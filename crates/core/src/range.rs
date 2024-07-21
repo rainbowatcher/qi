@@ -14,15 +14,38 @@ use crate::table::{
     KATAKANA, KATAKANA_PHONETIC_EXTENSIONS,
 };
 
-pub const R_CHINESE: [(char, char); 17] = [
-    CJK_RADICALS_SUPPLEMENT,                 // 2e80 - 2eff
-    KANGXI_RADICALS,                         // 2f00 - 2fdf
-    BOPOMOFO,                                // 3100 - 312f
-    BOPOMOFO_EXTENDED,                       // 31a0 - 31bf
-    CJK_STROKES,                             // 31c0 - 31ef
-    CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A,      // 3400 - 4dbf
-    CJK_UNIFIED_IDEOGRAPHS,                  // 4e00 - 9fff
-    CJK_COMPATIBILITY_IDEOGRAPHS,            // f900 - faff
+pub const R_CJK: [(char, char); 16] = [
+    HANGUL_JAMO,                        // 1100 - 11ff
+    CJK_RADICALS_SUPPLEMENT,            // 2e80 - 2eff
+    KANGXI_RADICALS,                    // 2f00 - 2fdf
+    HIRAGANA,                           // 3040 - 309f
+    KATAKANA,                           // 30a0 - 30ff
+    BOPOMOFO,                           // 3100 - 312f
+    HANGUL_COMPATIBILITY_JAMO,          // 3130 - 318f
+    KATAKANA_PHONETIC_EXTENSIONS,       // 31f0 - 31ff
+    BOPOMOFO_EXTENDED,                  // 31a0 - 31bf
+    CJK_STROKES,                        // 31c0 - 31ef
+    CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A, // 3400 - 4dbf
+    CJK_UNIFIED_IDEOGRAPHS,             // 4e00 - 9fff
+    HANGUL_JAMO_EXTENDED_A,             // a960 - a97f
+    HANGUL_SYLLABLES,                   // ac00 - d7af
+    HANGUL_JAMO_EXTENDED_B,             // d7b0 - d7ff
+    CJK_COMPATIBILITY_IDEOGRAPHS,       // f900 - fa6d
+];
+
+pub const R_CHINESE: [(char, char); 8] = [
+    CJK_RADICALS_SUPPLEMENT,            // 2e80 - 2eff
+    KANGXI_RADICALS,                    // 2f00 - 2fdf
+    BOPOMOFO,                           // 3100 - 312f
+    BOPOMOFO_EXTENDED,                  // 31a0 - 31bf
+    CJK_STROKES,                        // 31c0 - 31ef
+    CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A, // 3400 - 4dbf
+    CJK_UNIFIED_IDEOGRAPHS,             // 4e00 - 9fff
+    CJK_COMPATIBILITY_IDEOGRAPHS,       // f900 - faff
+];
+
+/// CJK Collections that are not in the range of 0xffff
+pub const R_CHINESE_EXTENSIONS: [(char, char); 9] = [
     CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B,      // 20000 - 2a6df
     CJK_UNIFIED_IDEOGRAPHS_EXTENSION_C,      // 2a700 - 2b73f
     CJK_UNIFIED_IDEOGRAPHS_EXTENSION_D,      // 2b740 - 2b81f
