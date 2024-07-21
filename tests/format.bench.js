@@ -1,7 +1,7 @@
 // @ts-expect-error missing type
 import pangu from "pangu"
 import { beforeAll, bench, describe } from "vitest"
-import init, { format } from "../packages/qi-js"
+import init, { format } from "../packages/qi-js/index.js"
 // eslint-disable-next-line antfu/no-import-dist
 import { format as legacyFormat } from "../packages/qi-js-legacy/dist/index.js"
 
@@ -13,6 +13,7 @@ const options = {
     time: 1000,
     warmupTime: 1500,
 }
+
 // test case from blog: https://antfu.me/posts/mental-health-oss-zh
 describe("short", () => {
     const str = "急切地等待新的issue、pull request和评论的出现"
