@@ -28,6 +28,6 @@
         "dist"
     ],
     "scripts": {
-        "build": "mkdist --format esm -d --ext js"
+        "build": "tsup src/index.ts --clean --minify --format esm --dts"
     }
 }
