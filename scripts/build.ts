@@ -44,18 +44,19 @@ await rimraf(`${process.cwd()}/${targetDir}`)
 spinner.succeed()
 
 spinner.start("Building wasm")
-await $`wasm-pack build crates/core --no-pack --release -d ../../${targetDir} -t web --out-name index`
+await $`wasm-pack build crates/core --no-pack --no-opt --release -d ../../${targetDir} -t web --out-name index`
 spinner.succeed()
 
 spinner.start("Optimizing wasm")
-await $`wasm-opt -O4 ${wasmPath} -o ${wasmPath}`
+await $`wasm-opt -O4 ${wasmPath} --enable-threads --enable-bulk-memory -o ${wasmPath}`
 spinner.succeed()
 
 spinner.start("Handle index.js")
 const indexStr = await readFile(indexFilePath, "utf8")
 const fetchExpr = "input = fetch(input);"
 if (indexStr.includes(fetchExpr)) {
-    const newIndexStr = `/* eslint-disable unicorn/no-abusive-eslint-disable */\n/* eslint-disable */\n${indexStr.replace(fetchExpr, `if (globalThis.process?.release?.name === "node") {
+    const newIndexStr = `/* eslint-disable unicorn/no-abusive-eslint-disable */
+/* eslint-disable */\n${indexStr.replace(fetchExpr, /* javascript */`if (globalThis.process?.release?.name === "node") {
         const fs = (await import('fs')).default;
         input = fs.readFileSync(input);
         } else {
@@ -88,5 +89,5 @@ spinner.start("Building legacy lib")
 await $`pnpm -r build`
 spinner.succeed()
 
-spinner.succeed(`build ${c.green("success")}`)
+spinner.succeed(`Build ${c.green("success")}`)
 spinner.stop()

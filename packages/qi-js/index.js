@@ -71,6 +71,17 @@ export function is_cjk(c) {
 * @param {string} c
 * @returns {boolean}
 */
+export function is_cjk_extended(c) {
+    const char0 = c.codePointAt(0);
+    _assertChar(char0);
+    const ret = wasm.is_cjk_extended(char0);
+    return ret !== 0;
+}
+
+/**
+* @param {string} c
+* @returns {boolean}
+*/
 export function is_number_forms(c) {
     const char0 = c.codePointAt(0);
     _assertChar(char0);
@@ -192,17 +203,6 @@ export function is_western_sentence_punctuation(c) {
 * @param {string} c
 * @returns {boolean}
 */
-export function is_colon(c) {
-    const char0 = c.codePointAt(0);
-    _assertChar(char0);
-    const ret = wasm.is_colon(char0);
-    return ret !== 0;
-}
-
-/**
-* @param {string} c
-* @returns {boolean}
-*/
 export function is_quote(c) {
     const char0 = c.codePointAt(0);
     _assertChar(char0);
@@ -219,16 +219,6 @@ function _assertClass(instance, klass) {
         throw new Error(`expected instance of ${klass.name}`);
     }
     return instance.ptr;
-}
-/**
-* @param {string} c
-* @returns {CharType}
-*/
-export function get_char_type(c) {
-    const char0 = c.codePointAt(0);
-    _assertChar(char0);
-    const ret = wasm.get_char_type(char0);
-    return ret;
 }
 
 let WASM_VECTOR_LEN = 0;

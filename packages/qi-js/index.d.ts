@@ -23,6 +23,11 @@ export function is_cjk(c: string): boolean;
 * @param {string} c
 * @returns {boolean}
 */
+export function is_cjk_extended(c: string): boolean;
+/**
+* @param {string} c
+* @returns {boolean}
+*/
 export function is_number_forms(c: string): boolean;
 /**
 * @param {string} c
@@ -78,17 +83,7 @@ export function is_western_sentence_punctuation(c: string): boolean;
 * @param {string} c
 * @returns {boolean}
 */
-export function is_colon(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
 export function is_quote(c: string): boolean;
-/**
-* @param {string} c
-* @returns {CharType}
-*/
-export function get_char_type(c: string): CharType;
 /**
 * @param {string} text
 * @param {Options | undefined} [options]
@@ -129,6 +124,7 @@ export interface InitOutput {
   readonly is_japanese: (a: number) => number;
   readonly is_korean: (a: number) => number;
   readonly is_cjk: (a: number) => number;
+  readonly is_cjk_extended: (a: number) => number;
   readonly is_number_forms: (a: number) => number;
   readonly is_cjk_compatibility_forms: (a: number) => number;
   readonly is_enclosed_cjk_letters_and_months: (a: number) => number;
@@ -140,14 +136,12 @@ export interface InitOutput {
   readonly is_open_parentheses: (a: number) => number;
   readonly is_close_parentheses: (a: number) => number;
   readonly is_western_sentence_punctuation: (a: number) => number;
-  readonly is_colon: (a: number) => number;
   readonly is_quote: (a: number) => number;
   readonly __wbg_get_spacingoptions_punctuations: (a: number) => number;
   readonly __wbg_set_spacingoptions_punctuations: (a: number, b: number) => void;
   readonly __wbg_options_free: (a: number) => void;
   readonly __wbg_get_options_spacing: (a: number) => number;
   readonly __wbg_set_options_spacing: (a: number, b: number) => void;
-  readonly get_char_type: (a: number) => number;
   readonly format: (a: number, b: number, c: number, d: number) => void;
   readonly __wbg_spacingoptions_free: (a: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
