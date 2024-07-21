@@ -1,90 +1,5 @@
 /* eslint-disable */
 /**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_chinese(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_japanese(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_korean(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_cjk(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_cjk_extended(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_number_forms(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_cjk_compatibility_forms(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_enclosed_cjk_letters_and_months(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_latin1_supplement(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_greek_and_coptic(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_enclosed_alphanumerics(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_cjk_compatibility(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_common_symbols(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_open_parentheses(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_close_parentheses(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_western_sentence_punctuation(c: string): boolean;
-/**
-* @param {string} c
-* @returns {boolean}
-*/
-export function is_quote(c: string): boolean;
-/**
 * @param {string} text
 * @param {Options | undefined} [options]
 * @returns {string}
@@ -94,10 +9,23 @@ export function format(text: string, options?: Options): string;
 */
 export enum CharType {
   Number = 0,
-  Alphabet = 1,
-  CJK = 2,
-  Colon = 3,
-  Other = 4,
+  Whitespace = 1,
+  Alphabet = 2,
+  CJK = 3,
+  Colon = 4,
+  NumberForm = 5,
+  CJKCompatibilityForm = 6,
+  EnclosedCJKLettersAndMonths = 7,
+  Latin1Supplement = 8,
+  GreekAndCoptic = 9,
+  EnclosedAlphanumerics = 10,
+  CJKCompatibility = 11,
+  CommonSymbol = 12,
+  OpenParenthese = 13,
+  CloseParenthese = 14,
+  WesternSentencePunctuation = 15,
+  Quote = 16,
+  Other = 99,
 }
 /**
 */
@@ -120,23 +48,6 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly is_chinese: (a: number) => number;
-  readonly is_japanese: (a: number) => number;
-  readonly is_korean: (a: number) => number;
-  readonly is_cjk: (a: number) => number;
-  readonly is_cjk_extended: (a: number) => number;
-  readonly is_number_forms: (a: number) => number;
-  readonly is_cjk_compatibility_forms: (a: number) => number;
-  readonly is_enclosed_cjk_letters_and_months: (a: number) => number;
-  readonly is_latin1_supplement: (a: number) => number;
-  readonly is_greek_and_coptic: (a: number) => number;
-  readonly is_enclosed_alphanumerics: (a: number) => number;
-  readonly is_cjk_compatibility: (a: number) => number;
-  readonly is_common_symbols: (a: number) => number;
-  readonly is_open_parentheses: (a: number) => number;
-  readonly is_close_parentheses: (a: number) => number;
-  readonly is_western_sentence_punctuation: (a: number) => number;
-  readonly is_quote: (a: number) => number;
   readonly __wbg_get_spacingoptions_punctuations: (a: number) => number;
   readonly __wbg_set_spacingoptions_punctuations: (a: number, b: number) => void;
   readonly __wbg_options_free: (a: number) => void;

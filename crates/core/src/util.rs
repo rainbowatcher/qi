@@ -1,5 +1,4 @@
 use core::cmp::Ordering::{Equal, Greater, Less};
-use wasm_bindgen::prelude::wasm_bindgen;
 
 use crate::{
     range::{
@@ -31,87 +30,70 @@ pub fn in_range<const N: usize>(c: char, r: &[(char, char); N]) -> bool {
     r.iter().any(|&(start, end)| start <= c && c <= end)
 }
 
-#[wasm_bindgen]
 pub fn is_chinese(c: char) -> bool {
     bsearch_range_table(c, &R_CHINESE)
 }
 
-#[wasm_bindgen]
 pub fn is_japanese(c: char) -> bool {
     in_range(c, &R_JAPANESE) || is_chinese(c)
 }
 
-#[wasm_bindgen]
 pub fn is_korean(c: char) -> bool {
     in_range(c, &R_KOREAN)
 }
 
-#[wasm_bindgen]
 pub fn is_cjk(c: char) -> bool {
     bsearch_range_table(c, &R_CJK)
 }
 
-#[wasm_bindgen]
 pub fn is_cjk_extended(c: char) -> bool {
     bsearch_range_table(c, &R_CHINESE_EXTENSIONS)
 }
 
-#[wasm_bindgen]
 pub fn is_number_forms(c: char) -> bool {
     NUMBER_FORMS.0 <= c && c <= NUMBER_FORMS.1
 }
 
-#[wasm_bindgen]
 pub fn is_cjk_compatibility_forms(c: char) -> bool {
     CJK_COMPATIBILITY_FORMS.0 <= c && c <= CJK_COMPATIBILITY_FORMS.1
 }
 
-#[wasm_bindgen]
 pub fn is_enclosed_cjk_letters_and_months(c: char) -> bool {
     ENCLOSED_CJK_LETTERS_AND_MONTHS.0 <= c && c <= ENCLOSED_CJK_LETTERS_AND_MONTHS.1
 }
 
-#[wasm_bindgen]
 pub fn is_latin1_supplement(c: char) -> bool {
     LATIN_1_SUPPLEMENT.0 <= c && c <= LATIN_1_SUPPLEMENT.1
 }
 
-#[wasm_bindgen]
 pub fn is_greek_and_coptic(c: char) -> bool {
     GREEK_AND_COPTIC.0 <= c && c <= GREEK_AND_COPTIC.1
 }
 
-#[wasm_bindgen]
 pub fn is_enclosed_alphanumerics(c: char) -> bool {
     ENCLOSED_ALPHANUMERICS.0 <= c && c <= ENCLOSED_ALPHANUMERICS.1
 }
 
-#[wasm_bindgen]
 pub fn is_cjk_compatibility(c: char) -> bool {
     CJK_COMPATIBILITY.0 <= c && c <= CJK_COMPATIBILITY.1
 }
 
-#[wasm_bindgen]
 pub fn is_common_symbols(c: char) -> bool {
     R_COMMON_SYMBOLS.get(&c).is_some()
 }
 
-#[wasm_bindgen]
 pub fn is_open_parentheses(c: char) -> bool {
     R_OPEN_PARENTHESES.get(&c).is_some()
 }
 
-#[wasm_bindgen]
 pub fn is_close_parentheses(c: char) -> bool {
     R_CLOSE_PARENTHESES.get(&c).is_some()
 }
 
-#[wasm_bindgen]
 pub fn is_western_sentence_punctuation(c: char) -> bool {
     R_WESTERN_SENTENCE_PUNCTUATIONS.get(&c).is_some()
 }
 
-#[wasm_bindgen]
 pub fn is_quote(c: char) -> bool {
     R_QUOTES.get(&c).is_some()
 }

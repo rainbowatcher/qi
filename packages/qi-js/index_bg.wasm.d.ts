@@ -1,22 +1,5 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function is_chinese(a: number): number;
-export function is_japanese(a: number): number;
-export function is_korean(a: number): number;
-export function is_cjk(a: number): number;
-export function is_cjk_extended(a: number): number;
-export function is_number_forms(a: number): number;
-export function is_cjk_compatibility_forms(a: number): number;
-export function is_enclosed_cjk_letters_and_months(a: number): number;
-export function is_latin1_supplement(a: number): number;
-export function is_greek_and_coptic(a: number): number;
-export function is_enclosed_alphanumerics(a: number): number;
-export function is_cjk_compatibility(a: number): number;
-export function is_common_symbols(a: number): number;
-export function is_open_parentheses(a: number): number;
-export function is_close_parentheses(a: number): number;
-export function is_western_sentence_punctuation(a: number): number;
-export function is_quote(a: number): number;
 export function __wbg_get_spacingoptions_punctuations(a: number): number;
 export function __wbg_set_spacingoptions_punctuations(a: number, b: number): void;
 export function __wbg_options_free(a: number): void;

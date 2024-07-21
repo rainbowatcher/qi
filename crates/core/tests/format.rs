@@ -203,6 +203,9 @@ fn punctuations() {
         }),
     };
     expect!("abc,123", "abc, 123");
+    expect!("abc,0", "abc, 0");
+    expect!("xyz,123", "xyz, 123");
+    expect!("xyz,789", "xyz, 789");
     expect!("abc,def", "abc, def");
     expect!("编号:89757", "编号: 89757");
     expect!("你好,世界", "你好, 世界");
@@ -226,6 +229,10 @@ fn parenthesis() {
     expect!("(or simply \"React\")", "(or simply \"React\")");
     expect!(
         "OperationalError: (2006, 'MySQL server has gone away')",
+        "OperationalError: (2006, 'MySQL server has gone away')"
+    );
+    expect!(
+        "OperationalError:(2006, 'MySQL server has gone away')",
         "OperationalError: (2006, 'MySQL server has gone away')"
     );
     expect!("我看过的电影(1404)", "我看过的电影 (1404)");
